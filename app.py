@@ -10,7 +10,8 @@ db = mysql.connector.connect(
     host=os.getenv("DB_HOST"),
     user=os.getenv("DB_USER"),
     password=os.getenv("DB_PASSWORD"),
-    database=os.getenv("DB_NAME")
+    database=os.getenv("DB_NAME"),
+    port=int(os.getenv("DB_PORT", "3306"))
 )
 
 @app.route('/datos', methods=['POST'])
@@ -40,7 +41,7 @@ def recibir_datos():
 
 @app.route('/')
 def home():
-    return 'API ESP32 lista y funcionando.', 200
+    return 'API ESP32 lista y funcionando', 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=10000)
